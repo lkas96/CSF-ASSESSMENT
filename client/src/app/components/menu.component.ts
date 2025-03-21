@@ -3,6 +3,8 @@ import { Cart, Item } from '../models';
 import { RestaurantService } from '../restaurant.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Subject } from 'rxjs/internal/Subject';
+import { Router } from '@angular/router';
+import { CheckoutService } from '../checkout.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +13,7 @@ import { Subject } from 'rxjs/internal/Subject';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent implements OnInit {
+
   // TODO: Task 2
 
   //this one to hold the cart items
@@ -19,7 +22,7 @@ export class MenuComponent implements OnInit {
 
   private subscription: Subscription = new Subscription();
 
-  constructor(private rs: RestaurantService){}
+  constructor(private rs: RestaurantService, private router: Router, private cs: CheckoutService){}
 
   ngOnInit(): void {
       // this.loadData().subscribe((data: Item[]) => {
@@ -48,6 +51,7 @@ export class MenuComponent implements OnInit {
     //instantiate the cart object now
     var anItem: Cart = {
       id: id,
+      unitPrice: price,
       name: name,
       quantity: 1,
       price: price,
@@ -76,6 +80,7 @@ export class MenuComponent implements OnInit {
     //instantiate the cart object now
     var anItem: Cart = {
       id: id,
+      unitPrice: price,
       name: name,
       quantity: 1,
       price: price
@@ -186,7 +191,15 @@ export class MenuComponent implements OnInit {
     }
     return sum;
   }
-  
+
+  toCheckout() {
+    // throw new Error('Method not implemented.');
+    const data = this.cartArray;
+    this.cs.changeData(data);
+    console.log("DATA BALSTED...")
+    this.router.navigate([`/checkout`]);
+  }
   
 
 }
+

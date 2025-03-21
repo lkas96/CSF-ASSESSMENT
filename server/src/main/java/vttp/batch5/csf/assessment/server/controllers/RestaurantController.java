@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
@@ -41,6 +43,14 @@ public class RestaurantController {
 
   // TODO: Task 4
   // Do not change the method's signature
+  @PostMapping("/food_order")
+  public String postMethodName(@RequestBody String entity) {
+    //first validate the user
+    //get username and apssword from thee request body.
+
+    return null;
+  }
+  
   public ResponseEntity<String> postFoodOrder(@RequestBody String payload) {
     return ResponseEntity.ok("{}");
   }

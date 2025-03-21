@@ -10,6 +10,7 @@ import { PlaceOrderComponent } from './components/place-order.component';
 
 import { ConfirmationComponent } from './components/confirmation.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CheckoutService } from './checkout.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule, ReactiveFormsModule, AppRoutingModule
   ],
-  providers: [ provideHttpClient() ],
+  providers: [ provideHttpClient(), CheckoutService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

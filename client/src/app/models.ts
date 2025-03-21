@@ -9,6 +9,18 @@ export interface Item {
 export interface Cart {
     id: string;
     name: string;
+    unitPrice: number;
     price: number;
     quantity: number;
+}
+
+export interface Clean {
+    id: string;
+    price: number;
+    quantity: number;
+}
+
+export interface User {
+    username: String;
+    password: String;
 }
