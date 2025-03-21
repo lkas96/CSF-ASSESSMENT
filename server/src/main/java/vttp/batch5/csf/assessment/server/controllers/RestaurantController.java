@@ -11,11 +11,12 @@ import jakarta.json.JsonArrayBuilder;
 import vttp.batch5.csf.assessment.server.models.MenuItem;
 import vttp.batch5.csf.assessment.server.services.RestaurantService;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
-
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping(path="/api", produces=MediaType.APPLICATION_JSON_VALUE)
 public class RestaurantController {
