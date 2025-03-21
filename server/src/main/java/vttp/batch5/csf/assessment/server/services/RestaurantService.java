@@ -1,13 +1,44 @@
 package vttp.batch5.csf.assessment.server.services;
+import vttp.batch5.csf.assessment.server.models.MenuItem;
+import vttp.batch5.csf.assessment.server.repositories.OrdersRepository;
+import java.util.LinkedList;
+import java.util.List;
 
+import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RestaurantService {
+
+  @Autowired
+  private OrdersRepository or;
 
 
   // TODO: Task 2.2
   // You may change the method's signature
-  public void getMenu() {
+  public List<MenuItem> getMenus() {
+    
+    //get the list of docs first menu items
+    List<Document> retrieved = or.getMenus();
+
+    //want to add to menuitems after instantiating them and return this list
+    List<MenuItem> items = new LinkedList<>();
+
+    for (Document doc: retrieved){
+      String id = doc.getString("_id");
+      String name = doc.getString("name");
+      String desc = doc.getString("description");
+      double price = doc.getDouble("price");
+
+      //create menu item object add add
+      MenuItem m = new MenuItem(id, name, price, desc);
+      items.add(m);
+    }
+
+    return items;
   }
+
   
   // TODO: Task 4
 
