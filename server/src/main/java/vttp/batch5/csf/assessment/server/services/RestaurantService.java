@@ -29,10 +29,26 @@ public class RestaurantService {
       String id = doc.getString("_id");
       String name = doc.getString("name");
       String desc = doc.getString("description");
-      double price = doc.getDouble("price");
+
+      // String price = doc.getString("price").toString();
+      // Object price = doc.get("price");
+      // Double price2 = Double.parseDouble((String) price);
+
+      //error handling cast properly 
+      Object priceObj = doc.get("price");
+      String price;
+      if (priceObj instanceof Double) {
+          price = String.format("%.2f", (Double) priceObj);
+      } else if (priceObj instanceof Integer) {
+          price = Integer.toString((Integer) priceObj);
+      } else {
+        price = "0"; //should not get here ever.
+      }
+
+      Double priceCasted = Double.parseDouble(price);
 
       //create menu item object add add
-      MenuItem m = new MenuItem(id, name, price, desc);
+      MenuItem m = new MenuItem(id, name, priceCasted, desc);
       items.add(m);
     }
 

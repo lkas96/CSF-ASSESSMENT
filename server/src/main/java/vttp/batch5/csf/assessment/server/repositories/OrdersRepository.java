@@ -28,6 +28,8 @@ public class OrdersRepository {
 
         List<Document> results = template.find(q, Document.class, "menus");
 
+        System.out.println(results.toString());
+        
         return results;
     }
 
