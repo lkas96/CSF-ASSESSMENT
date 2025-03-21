@@ -34,14 +34,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping(path="/api", produces=MediaType.APPLICATION_JSON_VALUE)
 public class RestaurantController {
 
-    private final CORSConfig CORSConfig;
-
   @Autowired
   private RestaurantService rs;
-
-    RestaurantController(CORSConfig CORSConfig) {
-        this.CORSConfig = CORSConfig;
-    }
 
   // TODO: Task 2.2
   // You may change the method's signature
