@@ -1,0 +1,6 @@
+# TODO: Task 1.1
+//import to local host
+mongoimport --db=restaurant --collection=menus --file="C:\Users\Lawson\OneDrive\Desktop\csf_assessment_template\data\menus.json" --type=json --jsonArray
+
+//import to the cloud railway remote host
+mongoimport --host "RAILWAYHOST" --db=restaurant --collection=menus --file="C:\Users\Lawson\OneDrive\Desktop\csf_assessment_template\data\menus.json" --type=json --jsonArray
